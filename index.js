@@ -6,6 +6,15 @@ const app = express();
 const port = process.env.PORT || 3000;
 const upload = multer();
 
+// Add Content Security Policy header
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; font-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline';"
+  );
+  next();
+});
+
 app.use(express.json());
 
 app.post('/upload', upload.single('file'), async (req, res) => {
