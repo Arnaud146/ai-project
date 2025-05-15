@@ -37,6 +37,10 @@ app.get('/files', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send('API GCS Node en ligne');
+});
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
