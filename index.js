@@ -37,6 +37,16 @@ app.get('/files', async (req, res) => {
   }
 });
 
+app.get('/upload', (req, res) => {
+  res.send(`
+    <h2>Uploader un fichier vers GCS</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" required />
+      <button type="submit">Envoyer</button>
+    </form>
+  `);
+});
+
 app.get('/', (req, res) => {
   res.send('API GCS Node en ligne');
 });
